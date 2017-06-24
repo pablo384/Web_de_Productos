@@ -8,9 +8,9 @@
           <element id="module-output" name="Web_de_Productos" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="mysql-connector-java-5.1.40-bin" />
           <element id="library" level="project" name="javax.servlet.jsp.jstl-api-1.2.1" />
           <element id="library" level="project" name="javax.servlet.jsp.jstl-1.2.1" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.40-bin" />
         </element>
       </element>
     </root>

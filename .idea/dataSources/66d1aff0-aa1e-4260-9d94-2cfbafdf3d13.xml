@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="cursosql@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="cursosql">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="proyecto_jsp"/>
+    <schema id="7" parent="1" name="sys"/>
+    <table id="8" parent="2" name="clientes"/>
+    <table id="9" parent="2" name="pedidos"/>
+    <table id="10" parent="2" name="productos"/>
+    <column id="11" parent="8" name="CÓDIGOCLIENTE">
+      <Position>1</Position>
+      <DataType>varchar(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="12" parent="8" name="EMPRESA">
+      <Position>2</Position>
+      <DataType>varchar(25)|0</DataType>
+    </column>
+    <column id="13" parent="8" name="DIRECCIÓN">
+      <Position>3</Position>
+      <DataType>varchar(19)|0</DataType>
+    </column>
+    <column id="14" parent="8" name="POBLACIÓN">
+      <Position>4</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <column id="15" parent="8" name="TELÉFONO">
+      <Position>5</Position>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="16" parent="8" name="RESPONSABLE">
+      <Position>6</Position>
+      <DataType>varchar(18)|0</DataType>
+    </column>
+    <column id="17" parent="8" name="HISTORIAL">
+      <Position>7</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <key id="18" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CÓDIGOCLIENTE</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="19" parent="9" name="NÚMERODEPEDIDO">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="20" parent="9" name="CÓDIGOCLIENTE">
+      <Position>2</Position>
+      <DataType>varchar(4)|0</DataType>
+    </column>
+    <column id="21" parent="9" name="FECHADEPEDIDO">
+      <Position>3</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="22" parent="9" name="FORMADEPAGO">
+      <Position>4</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="23" parent="9" name="DESCUENTO">
+      <Position>5</Position>
+      <DataType>decimal(3,2)|0</DataType>
+    </column>
+    <column id="24" parent="9" name="ENVIADO">
+      <Position>6</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <index id="25" parent="9" name="CÓDIGOCLIENTE">
+      <ColNames>CÓDIGOCLIENTE</ColNames>
+    </index>
+    <key id="26" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>NÚMERODEPEDIDO</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="10" name="CÓDIGOARTÍCULO">
+      <Position>1</Position>
+      <DataType>varchar(4)|0</DataType>
+    </column>
+    <column id="28" parent="10" name="SECCIÓN">
+      <Position>2</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="29" parent="10" name="NOMBREARTÍCULO">
+      <Position>3</Position>
+      <DataType>varchar(19)|0</DataType>
+    </column>
+    <column id="30" parent="10" name="PRECIO">
+      <Position>4</Position>
+      <DataType>decimal(8,2)|0</DataType>
+    </column>
+    <column id="31" parent="10" name="FECHA">
+      <Position>5</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="32" parent="10" name="IMPORTADO">
+      <Position>6</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <column id="33" parent="10" name="PAÍSDEORIGEN">
+      <Position>7</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <column id="34" parent="10" name="FOTO">
+      <Position>8</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+  </database-model>
+</dataSource>
