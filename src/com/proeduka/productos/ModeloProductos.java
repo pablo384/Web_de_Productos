@@ -33,19 +33,19 @@ public class ModeloProductos {
         miRs = miStatement.executeQuery(miSql);
         //recorrer resultados obtenidos
         while (miRs.next()) {
-            String cArt = miRs.getString("1");
-            String seccion = miRs.getString("2");
-            String nombreArt = miRs.getString("3");
-            double precio = miRs.getDouble("4");
-            Date fecha = miRs.getDate("5");
-            String importado = miRs.getString("6");
-            String paisOrigen = miRs.getString("7");
+            String cArt = miRs.getString("CÓDIGOARTÍCULO");
+            String seccion = miRs.getString("SECCIÓN");
+            String nombreArt = miRs.getString("NOMBREARTÍCULO");
+            double precio = miRs.getDouble("PRECIO");
+            //Date fecha = new java.sql.Date(miRs.getDate("FECHA").getTime());
+            String importado = miRs.getString("IMPORTADO");
+            String paisOrigen = miRs.getString("PAÍSDEORIGEN");
 
             Productos miProduc = new Productos(cArt,
                     seccion,
                     nombreArt,
                     precio,
-                    fecha,
+                    null,
                     importado,
                     paisOrigen);
 
