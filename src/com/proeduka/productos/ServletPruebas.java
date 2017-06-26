@@ -1,6 +1,8 @@
 package com.proeduka.productos;
 
 import javax.annotation.Resource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.*;
+import javax.naming.*;
+
+
 
 /**
  * Created by pablo on 23/6/2017.
@@ -24,6 +30,7 @@ public class ServletPruebas extends HttpServlet {
     //definir DataSource
     @Resource(name = "jdbc/Productos")
     private DataSource miPool;
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -40,8 +47,14 @@ public class ServletPruebas extends HttpServlet {
         ResultSet miRs=null;
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            miConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cursosql", "root", "");
+//            Context initContext = new InitialContext();
+//            Context envContext  = (Context)initContext.lookup("java:/comp/env");
+//            DataSource ds = (DataSource)envContext.lookup("jdbc/Productos");
+//            Connection conn = ds.getConnection();
+
+//            Class.forName("com.mysql.jdbc.Driver");
+//            miConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cursosql", "root", "");
+            miConnection= new GetConnection().getSimpleConnection();
             String miSql="SELECT * FROM PRODUCTOS";
             miStatement=miConnection.createStatement();
             miRs=miStatement.executeQuery(miSql);
@@ -57,3 +70,4 @@ public class ServletPruebas extends HttpServlet {
 
     }
 }
+
