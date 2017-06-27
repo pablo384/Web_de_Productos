@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -61,18 +64,30 @@ public class ControladorProductos extends HttpServlet {
         String codArticulo=request.getParameter("cArt");
         String seccion=request.getParameter("seccion");
         String nombreArt=request.getParameter("nombreArt");
-        String precio=request.getParameter("precio");
-        String fecha=request.getParameter("fecha");
+        double precio= Double.parseDouble(request.getParameter("precio"));
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("YYYY/MM/dd");
+        Date fecha = null;
+        try {
+            fecha= formatDate.parse(request.getParameter("fecha"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         String importado=request.getParameter("importado");
         String paisOrigen=request.getParameter("paisOrigen");
 
         //crea run objeto de tipo producto
+        Productos miProducto = new Productos(
+                codArticulo,seccion,
+                nombreArt,precio,fecha,
+                importado,paisOrigen);
 
-        //enviar el objeto al modelo
-
-        //insertar el obj producto en la BBDD
+        //enviar el objeto al modelo insertar el obj producto en la BBDD
+        modeloProductos.agregarElNuevoProducto(miProducto);
 
         //volver al listado de ptroductos
+
+        obtenerProductos(request,response);
     }
 
     private void obtenerProductos(ServletRequest request, ServletResponse response) {

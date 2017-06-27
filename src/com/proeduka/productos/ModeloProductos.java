@@ -55,4 +55,16 @@ public class ModeloProductos {
 
         return productos;
     }
+
+    public void agregarElNuevoProducto(Productos miProducto) {
+
+        //OBTENER CONEXION CON BBD
+
+        //CREAR INSTRUCCION INSERT
+
+        //ESTABLECER PARAMETROS PARA EL PRODUCTO
+
+        //EJECTAR LA INSTRUCCION SQL
+
+    }
 }
