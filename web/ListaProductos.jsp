@@ -13,6 +13,7 @@
     <title>Lista Productos</title>
     <style type="text/css">
         .cabecera{
+            text-align: center;
             font-size: 1.2em;
             font-weight: bold;
             color: #FFFFFF;
@@ -21,6 +22,12 @@
         .filas{
             text-align: center;
             background-color: cornflowerblue;
+        }
+        table{
+            float: left;
+        }
+        #contenedorBoton{
+            margin-left: 1000px;
         }
     </style>
 </head>
@@ -49,9 +56,11 @@
             <td class="filas">${tempPro.paisOrigen}</td>
         </tr>
     </c:forEach>
-
-
 </table>
+
+<div id="contenedorBoton">
+    <input type="button" value="Insertar Registro" onclick="window.location.href='inserta_producto.jsp'">
+</div>
 
 </body>
 </html>
