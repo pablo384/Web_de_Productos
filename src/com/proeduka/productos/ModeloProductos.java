@@ -37,7 +37,7 @@ public class ModeloProductos {
             String seccion = miRs.getString("SECCIÓN");
             String nombreArt = miRs.getString("NOMBREARTÍCULO");
             double precio = miRs.getDouble("PRECIO");
-            //Date fecha = new java.sql.Date(miRs.getDate("FECHA").getTime());
+            Date fecha = new java.sql.Date(miRs.getDate("FECHA").getTime());
             String importado = miRs.getString("IMPORTADO");
             String paisOrigen = miRs.getString("PAÍSDEORIGEN");
 
@@ -45,7 +45,7 @@ public class ModeloProductos {
                     seccion,
                     nombreArt,
                     precio,
-                    null,
+                    fecha,
                     importado,
                     paisOrigen);
 

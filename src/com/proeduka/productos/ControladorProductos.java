@@ -59,12 +59,12 @@ public class ControladorProductos extends HttpServlet {
 
         //leer la infromacion del producto que viene del formulario
         String codArticulo=request.getParameter("cArt");
-        String seccion=request.getParameter("cArt");
-        String nombreArt=request.getParameter("cArt");
-        String precio=request.getParameter("cArt");
-        String fecha=request.getParameter("cArt");
-        String importado=request.getParameter("cArt");
-        String paisOrigen=request.getParameter("cArt");
+        String seccion=request.getParameter("seccion");
+        String nombreArt=request.getParameter("nombreArt");
+        String precio=request.getParameter("precio");
+        String fecha=request.getParameter("fecha");
+        String importado=request.getParameter("importado");
+        String paisOrigen=request.getParameter("paisOrigen");
 
         //crea run objeto de tipo producto
 
