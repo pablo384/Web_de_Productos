@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.proeduka.productos.Productos" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: pablo
   Date: 25/6/2017
@@ -14,15 +13,18 @@
     <title>Lista Productos</title>
     <style type="text/css">
         .cabecera{
-            border-bottom:solid #F00 1px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #FFFFFF;
+            background-color: blue;
         }
-
+        .filas{
+            text-align: center;
+            background-color: cornflowerblue;
+        }
     </style>
 </head>
-<%
-    //obtiene los productos del controlador Servlet
-    List<Productos> losProductos= (List<Productos>) request.getAttribute("listaProductos");
-%>
+
 <body>
 
 <table>
@@ -36,20 +38,19 @@
         <td class="cabecera">Pais de Origen</td>
     </tr>
 
-    <%for (Productos tempPro : losProductos){ %>
+    <c:forEach var="tempPro" items="${listaProductos}">
         <tr>
-
-            <td><%=tempPro.getcArt()%></td>
-            <td><%=tempPro.getSeccion()%></td>
-            <td><%=tempPro.getNombreArt()%></td>
-            <td><%=tempPro.getPrecio()%></td>
-            <td><%=tempPro.getFecha()%></td>
-            <td><%=tempPro.getImportado()%></td>
-            <td><%=tempPro.getPaisOrigen()%></td>
-
+            <td class="filas">${tempPro.cArt}</td>
+            <td class="filas">${tempPro.seccion}</td>
+            <td class="filas">${tempPro.nombreArt}</td>
+            <td class="filas">${tempPro.precio}</td>
+            <td class="filas">${tempPro.fecha}</td>
+            <td class="filas">${tempPro.importado}</td>
+            <td class="filas">${tempPro.paisOrigen}</td>
         </tr>
+    </c:forEach>
 
-        <%}%>
+
 </table>
 
 </body>
