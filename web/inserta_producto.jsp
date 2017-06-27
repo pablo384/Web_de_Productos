@@ -12,7 +12,8 @@
 </head>
 <body>
 <h1 style="text-align: center ">Insertar Registros</h1>
-<form name="forml" method="post" action="">
+<form name="forml" method="get" action="ControladorProductos">
+    <input type="hidden" name="instruccion" value="insertarBBDD">
     <table width="50%" border="0">
         <tr>
             <td width="27%">Codigo Articulo</td>
