@@ -73,7 +73,6 @@ public class ControladorProductos extends HttpServlet {
         String codigoArt = request.getParameter("cArticulo");
 
         //Enviar CodigoArticulo al modelo
-
         Productos elProducto = modeloProductos.getProducto(codigoArt);
 
         //colocar atributo correspondiente al CodigoArticulo
