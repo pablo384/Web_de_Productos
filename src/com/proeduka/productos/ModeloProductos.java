@@ -99,4 +99,58 @@ public class ModeloProductos {
         }
 
     }
+
+    public Productos getProducto(String codigoArt) {
+        Connection miConexion=null;
+        PreparedStatement miStatement=null;
+        Productos miProducto=null;
+        ResultSet miResulset = null;
+        String codigoArticulo= codigoArt;
+
+        try {
+
+
+            //establecer la conexion con BBD
+                miConexion=new GetConnection().getSimpleConnection();
+            //crear SQL que busque el producto con el Codigo articulo
+            String sql="SELECT * FROM PRODUCTOS WHERE CÓDIGOARTÍCULO=?";
+            //crear consulta preparada
+            miStatement=miConexion.prepareStatement(sql);
+            //establecer parameetros de esa consulta
+
+            miStatement.setString(1,codigoArticulo);
+
+            //ejecutar consulta
+            miResulset = miStatement.executeQuery();
+
+            //obtener datos de respuesta
+
+
+
+
+            if (miResulset.next()){
+                String seccion = miResulset.getString("SECCIÓN");
+                String nombreArt = miResulset.getString("NOMBREARTÍCULO");
+                double precio = miResulset.getDouble("PRECIO");
+                Date fecha = miResulset.getDate("FECHA");
+                String importado = miResulset.getString("IMPORTADO");
+                String paisOrigen = miResulset.getString("PAÍSDEORIGEN");
+
+                miProducto = new Productos(
+                        seccion,
+                        nombreArt,
+                        precio,
+                        fecha,
+                        importado,
+                        paisOrigen);
+
+            }else {
+                throw new Exception("No hemos encontrado el codigo articulo="+codigoArticulo);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return miProducto;
+    }
 }

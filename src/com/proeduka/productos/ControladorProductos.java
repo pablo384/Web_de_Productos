@@ -49,12 +49,41 @@ public class ControladorProductos extends HttpServlet {
                 agregarProductos(request,response);
             break;
 
+            case "cargar":
+                try {
+                    cargaProductos(request,response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
             default:obtenerProductos(request,response);
             break;
         }
 
         //Redirigir el flujo de ejecucion a metodo adecuado
 
+
+    }
+
+    private void cargaProductos(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+        //leer cArticulo que viene del listado
+
+        String codigoArt = request.getParameter("cArticulo");
+
+        //Enviar CodigoArticulo al modelo
+
+        Productos elProducto = modeloProductos.getProducto(codigoArt);
+
+        //colocar atributo correspondiente al CodigoArticulo
+
+        request.setAttribute("CÓDIGOARTÍCULO", elProducto);
+
+        //enviar toda la informacion al formulario
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("actualizarProducto.jsp");
+
+        requestDispatcher.forward(request,response);
 
     }
 
