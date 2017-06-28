@@ -43,9 +43,17 @@
         <td class="cabecera">Fecha</td>
         <td class="cabecera">Importado</td>
         <td class="cabecera">Pais de Origen</td>
+        <td class="cabecera">Accion</td>
     </tr>
 
     <c:forEach var="tempPro" items="${listaProductos}">
+
+        <!---Link para cada producto con su campo clave --->
+        <c:url var="linkTemp" value="ControladorProductos">
+            <c:param name="instruccion" value="cargar"></c:param>
+            <c:param name="cArticulo" value="${tempPro.cArt}"></c:param>
+        </c:url>
+
         <tr>
             <td class="filas">${tempPro.cArt}</td>
             <td class="filas">${tempPro.seccion}</td>
@@ -54,6 +62,7 @@
             <td class="filas">${tempPro.fecha}</td>
             <td class="filas">${tempPro.importado}</td>
             <td class="filas">${tempPro.paisOrigen}</td>
+            <td class="filas"><a href="${linkTemp}">Actualizar</a> </td>
         </tr>
     </c:forEach>
 </table>
