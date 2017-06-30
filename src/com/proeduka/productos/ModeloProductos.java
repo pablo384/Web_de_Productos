@@ -197,4 +197,25 @@ public class ModeloProductos {
             e.printStackTrace();
         }
     }
+
+    public void eliminarProducto(String codigoArticulo) {
+
+        Connection miConexion=null;
+        PreparedStatement miStatement=null;
+
+        try {
+            miConexion= new GetConnection().getSimpleConnection();
+            String sqlEliminar = "DELETE FROM productos WHERE CÓDIGOARTÍCULO=?";
+
+            miStatement=miConexion.prepareStatement(sqlEliminar);
+            miStatement.setString(1,codigoArticulo);
+
+            miStatement.execute();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
 }

@@ -65,6 +65,13 @@ public class ControladorProductos extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "eliminar":
+                try {
+                    eliminarProducto(request,response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
 
             default:obtenerProductos(request,response);
             break;
@@ -73,6 +80,16 @@ public class ControladorProductos extends HttpServlet {
         //Redirigir el flujo de ejecucion a metodo adecuado
 
 
+    }
+
+    private void eliminarProducto(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+        String codigoArticulo= request.getParameter("cArticulo");
+
+        modeloProductos.eliminarProducto(codigoArticulo);
+
+
+        obtenerProductos(request,response);
     }
 
     private void actualizarProducto(HttpServletRequest request, HttpServletResponse response) throws Exception{
