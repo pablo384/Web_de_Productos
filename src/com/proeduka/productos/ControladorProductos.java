@@ -56,6 +56,12 @@ public class ControladorProductos extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "actBBDD":
+                try {
+                    actualizaProducto(request,response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             default:obtenerProductos(request,response);
             break;
@@ -64,6 +70,40 @@ public class ControladorProductos extends HttpServlet {
         //Redirigir el flujo de ejecucion a metodo adecuado
 
 
+    }
+
+    private void actualizaProducto(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        //leer los datos que le vienen del formulario de actualizar
+
+        String codArticulo=request.getParameter("cArt");
+        String seccion=request.getParameter("seccion");
+        String nombreArt=request.getParameter("nombreArt");
+        double precio= Double.parseDouble(request.getParameter("precio"));
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("YYYY/MM/dd");
+        Date fecha = null;
+        try {
+            fecha= formatDate.parse(request.getParameter("fecha"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String importado=request.getParameter("importado");
+        String paisOrigen=request.getParameter("paisOrigen");
+
+
+        //crear un obj de tipo producto con info form
+
+        Productos ProductoActualizado = new Productos(
+                codArticulo,seccion,
+                nombreArt,precio,fecha,
+                importado,paisOrigen);
+
+        //actualizar BBDD con info nueva
+
+        modeloProductos.actualizarProducto(ProductoActualizado);
+
+        //volver al listado con la info actualizada
+        obtenerProductos(request,response);
     }
 
     private void cargaProductos(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -77,7 +117,7 @@ public class ControladorProductos extends HttpServlet {
 
         //colocar atributo correspondiente al CodigoArticulo
 
-        request.setAttribute("CÓDIGOARTÍCULO", elProducto);
+        request.setAttribute("ProductoActualizar", elProducto);
 
         //enviar toda la informacion al formulario
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("actualizarProducto.jsp");

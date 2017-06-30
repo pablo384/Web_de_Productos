@@ -153,4 +153,8 @@ public class ModeloProductos {
         }
         return miProducto;
     }
+
+    public void actualizarProducto(Productos productoActualizado) {
+
+    }
 }
