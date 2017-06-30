@@ -19,43 +19,43 @@
         <tr>
             <td width="27%" hidden>Codigo Articulo</td>
             <td width="27%" hidden> <label for="cArt"></label>
-                <input hidden type="text" name="cArt" id="cArt" value="${codigo_articulo.cArt}"></td>
+                <input hidden type="text" name="cArt" id="cArt" value="${productoporActualizar.cArt}"></td>
         </tr>
 
         <tr>
             <td width="27%">Seccion</td>
             <td width="27%"> <label for="seccion"></label>
-                <input type="text" name="seccion" id="seccion" value="${codigo_articulo.seccion}"></td>
+                <input type="text" name="seccion" id="seccion" value="${productoporActualizar.seccion}"></td>
         </tr>
 
         <tr>
             <td width="27%">Nombre Articulo</td>
             <td width="27%"> <label for="nombreArt"></label>
-                <input type="text" name="nombreArt" id="nombreArt" value="${codigo_articulo.nombreArt}"></td>
+                <input type="text" name="nombreArt" id="nombreArt" value="${productoporActualizar.nombreArt}"></td>
         </tr>
 
         <tr>
             <td width="27%">Precio</td>
             <td width="27%"> <label for="precio"></label>
-                <input type="text" name="precio" id="precio" value="${codigo_articulo.precio}"></td>
+                <input type="text" name="precio" id="precio" value="${productoporActualizar.precio}"></td>
         </tr>
 
         <tr>
             <td width="27%">Fecha</td>
             <td width="27%"> <label for="fecha"></label>
-                <input type="text" name="fecha" id="fecha" value="${codigo_articulo.fecha}"></td>
+                <input type="text" name="fecha" id="fecha" value="${productoporActualizar.fecha}"></td>
         </tr>
 
         <tr>
             <td width="27%">Importado</td>
             <td width="27%"> <label for="importado"></label>
-                <input type="text" name="importado" id="importado" value="${codigo_articulo.importado}"></td>
+                <input type="text" name="importado" id="importado" value="${productoporActualizar.importado}"></td>
         </tr>
 
         <tr>
             <td width="27%">Pais de Origen</td>
             <td width="27%"> <label for="paisOrigen"></label>
-                <input type="text" name="paisOrigen" id="paisOrigen" value="${codigo_articulo.paisOrigen}"></td>
+                <input type="text" name="paisOrigen" id="paisOrigen" value="${productoporActualizar.paisOrigen}"></td>
         </tr>
 
         <td><input type="submit" name="envio" id="envio" value="Enviar"></td>

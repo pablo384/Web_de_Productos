@@ -59,7 +59,11 @@ public class ControladorProductos extends HttpServlet {
                 }
                 break;
             case "actualizar":
-                actualizarProducto(request,response);
+                try {
+                    actualizarProducto(request,response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
 
             default:obtenerProductos(request,response);
@@ -71,7 +75,7 @@ public class ControladorProductos extends HttpServlet {
 
     }
 
-    private void actualizarProducto(HttpServletRequest request, HttpServletResponse response) {
+    private void actualizarProducto(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
         //leer la infromacion del producto que viene del formulario
         String codArticulo=request.getParameter("cArt");
@@ -115,7 +119,7 @@ public class ControladorProductos extends HttpServlet {
 
         //colocar atributo correspondiente al CodigoArticulo
 
-        request.setAttribute("codigo_articulo", elProducto);
+        request.setAttribute("productoporActualizar", elProducto);
 
         //enviar toda la informacion al formulario
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("actualizarProducto.jsp");
