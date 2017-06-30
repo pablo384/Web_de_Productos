@@ -16,11 +16,11 @@
 <form name="formlUpdate" method="get" action="ControladorProductos">
     <input type="hidden" name="instruccion" value="actualizar">
     <table width="50%" border="0">
-        <%--<tr>--%>
-            <%--<td width="27%">Codigo Articulo</td>--%>
-            <%--<td width="27%"> <label for="cArt"></label>--%>
-                <%--<input type="text" name="cArt" id="cArt"></td>--%>
-        <%--</tr>--%>
+        <tr>
+            <td width="27%" hidden>Codigo Articulo</td>
+            <td width="27%" hidden> <label for="cArt"></label>
+                <input hidden type="text" name="cArt" id="cArt" value="${codigo_articulo.cArt}"></td>
+        </tr>
 
         <tr>
             <td width="27%">Seccion</td>

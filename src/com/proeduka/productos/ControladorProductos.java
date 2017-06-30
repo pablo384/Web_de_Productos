@@ -13,6 +13,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by pablo on 25/6/2017.
@@ -56,6 +58,9 @@ public class ControladorProductos extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "actualizar":
+                actualizarProducto(request,response);
+                break;
 
             default:obtenerProductos(request,response);
             break;
@@ -63,6 +68,39 @@ public class ControladorProductos extends HttpServlet {
 
         //Redirigir el flujo de ejecucion a metodo adecuado
 
+
+    }
+
+    private void actualizarProducto(HttpServletRequest request, HttpServletResponse response) {
+
+        //leer la infromacion del producto que viene del formulario
+        String codArticulo=request.getParameter("cArt");
+        String seccion=request.getParameter("seccion");
+        String nombreArt=request.getParameter("nombreArt");
+        double precio= Double.parseDouble(request.getParameter("precio"));
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("YYYY-MM-dd", Locale.ENGLISH);
+        formatDate.setTimeZone(TimeZone.getDefault());
+        Date fecha = null;
+        try {
+            fecha= formatDate.parse(request.getParameter("fecha"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String importado=request.getParameter("importado");
+        String paisOrigen=request.getParameter("paisOrigen");
+
+        //crea run objeto de tipo producto
+        Productos miProducto = new Productos(
+                codArticulo,seccion,
+                nombreArt,precio,fecha,
+                importado,paisOrigen);
+
+        //enviar el objeto al modelo insertar el obj producto en la BBDD
+        modeloProductos.actualizarProducto(miProducto);
+
+        //volver al listado de ptroductos
+        obtenerProductos(request,response);
 
     }
 
@@ -94,7 +132,7 @@ public class ControladorProductos extends HttpServlet {
         String nombreArt=request.getParameter("nombreArt");
         double precio= Double.parseDouble(request.getParameter("precio"));
 
-        SimpleDateFormat formatDate = new SimpleDateFormat("YYYY/MM/dd");
+        SimpleDateFormat formatDate = new SimpleDateFormat("YYYY-MM-dd");
         Date fecha = null;
         try {
             fecha= formatDate.parse(request.getParameter("fecha"));

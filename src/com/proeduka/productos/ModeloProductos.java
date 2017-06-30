@@ -129,6 +129,7 @@ public class ModeloProductos {
 
 
             if (miResulset.next()){
+                String cArt = miResulset.getString("CÓDIGOARTÍCULO");
                 String seccion = miResulset.getString("SECCIÓN");
                 String nombreArt = miResulset.getString("NOMBREARTÍCULO");
                 double precio = miResulset.getDouble("PRECIO");
@@ -136,7 +137,7 @@ public class ModeloProductos {
                 String importado = miResulset.getString("IMPORTADO");
                 String paisOrigen = miResulset.getString("PAÍSDEORIGEN");
 
-                miProducto = new Productos(
+                miProducto = new Productos(cArt,
                         seccion,
                         nombreArt,
                         precio,
@@ -152,5 +153,48 @@ public class ModeloProductos {
             e.printStackTrace();
         }
         return miProducto;
+    }
+
+    public void actualizarProducto(Productos miProducto) {
+        //OBTENER CONEXION CON BBD
+
+        Connection miConexion=null;
+        PreparedStatement miStatement=null;
+
+        try {
+            miConexion = new GetConnection().getSimpleConnection();
+
+
+            //CREAR INSTRUCCION INSERT SQL. Crear la consulta preparada
+
+            String sql="UPDATE `productos` "+
+                    "SET `SECCIÓN`=?,`NOMBREARTÍCULO`=?,"+
+                    "`PRECIO`=?,`FECHA`=?,`IMPORTADO`=?,"+
+                    "`PAÍSDEORIGEN`=?"+
+                    "WHERE `CÓDIGOARTÍCULO`=?";
+
+            miStatement = miConexion.prepareStatement(sql);
+
+            //ESTABLECER PARAMETROS PARA EL PRODUCTO
+
+            miStatement.setString(7, miProducto.getcArt());
+            miStatement.setString(1, miProducto.getSeccion());
+            miStatement.setString(2, miProducto.getNombreArt());
+            miStatement.setDouble(3, miProducto.getPrecio());
+
+            java.util.Date utilDate = miProducto.getFecha();
+            java.sql.Date fechaConvertida = new java.sql.Date(utilDate.getTime());
+
+            miStatement.setDate(4, fechaConvertida);
+            miStatement.setString(5, miProducto.getImportado());
+            miStatement.setString(6, miProducto.getPaisOrigen());
+
+
+            //EJECUTAR LA INSTRUCCION SQL
+            miStatement.execute();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
